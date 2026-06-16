@@ -5,9 +5,9 @@ const Employee = [
         password: "123",
 
         taskNumbers: {
-            active: 1,
-            newTask: 1,
-            completed: 1,
+            active: 0,
+            newTask: 2,
+            completed: 0,
             failed: 0
         },
 
@@ -20,7 +20,8 @@ const Employee = [
                 taskTitle: "Design Login Page",
                 taskDescription: "Create responsive login UI using React and Tailwind CSS.",
                 taskDate: "2026-06-03",
-                category: "Frontend"
+                category: "Frontend",
+                   Isaccepted: false
             },
             {
                 active: false,
@@ -30,7 +31,8 @@ const Employee = [
                 taskTitle: "Fix Navbar Bug",
                 taskDescription: "Resolve mobile navbar overlapping issue.",
                 taskDate: "2026-05-28",
-                category: "Bug Fix"
+                category: "Bug Fix",
+                   Isaccepted: false
             }
         ]
     },
@@ -41,10 +43,10 @@ const Employee = [
         password: "123",
 
         taskNumbers: {
-            active: 1,
-            newTask: 1,
+            active: 0,
+            newTask: 2,
             completed: 0,
-            failed: 1
+            failed: 0
         },
 
         tasks: [
@@ -56,7 +58,8 @@ const Employee = [
                 taskTitle: "API Integration",
                 taskDescription: "Connect frontend with employee management API.",
                 taskDate: "2026-06-04",
-                category: "Backend"
+                category: "Backend",
+                   Isaccepted: false
             },
             {
                 active: false,
@@ -66,7 +69,8 @@ const Employee = [
                 taskTitle: "Database Backup",
                 taskDescription: "Take backup of production database.",
                 taskDate: "2026-05-25",
-                category: "Database"
+                category: "Database",
+                   Isaccepted: false
             }
         ]
     },
@@ -77,9 +81,9 @@ const Employee = [
         password: "123",
 
         taskNumbers: {
-            active: 1,
-            newTask: 0,
-            completed: 1,
+            active: 0,
+            newTask: 2,
+            completed: 0,
             failed: 0
         },
 
@@ -92,7 +96,8 @@ const Employee = [
                 taskTitle: "Create Dashboard",
                 taskDescription: "Develop admin dashboard with charts and cards.",
                 taskDate: "2026-06-05",
-                category: "Frontend"
+                category: "Frontend",
+                   Isaccepted: false
             },
             {
                 active: false,
@@ -102,7 +107,8 @@ const Employee = [
                 taskTitle: "Optimize Images",
                 taskDescription: "Compress website images for faster loading.",
                 taskDate: "2026-05-30",
-                category: "Optimization"
+                category: "Optimization" , 
+                  Isaccepted: false
             }
         ]
     },
@@ -113,10 +119,10 @@ const Employee = [
         password: "123",
 
         taskNumbers: {
-            active: 1,
-            newTask: 1,
+            active: 0,
+            newTask: 2,
             completed: 0,
-            failed: 1
+            failed: 0
         },
 
         tasks: [
@@ -128,7 +134,8 @@ const Employee = [
                 taskTitle: "Testing Authentication",
                 taskDescription: "Test login and signup authentication flow.",
                 taskDate: "2026-06-06",
-                category: "Testing"
+                category: "Testing",
+                   Isaccepted: false
             },
             {
                 active: false,
@@ -138,7 +145,8 @@ const Employee = [
                 taskTitle: "Deploy Application",
                 taskDescription: "Deploy React application to production server.",
                 taskDate: "2026-05-27",
-                category: "Deployment"
+                category: "Deployment",
+                   Isaccepted: false
             }
         ]
     },
@@ -149,9 +157,9 @@ const Employee = [
         password: "123",
 
         taskNumbers: {
-            active: 1,
-            newTask: 1,
-            completed: 1,
+            active: 0,
+            newTask: 2,
+            completed: 0,
             failed: 0
         },
 
@@ -164,7 +172,8 @@ const Employee = [
                 taskTitle: "Build User Profile",
                 taskDescription: "Create editable user profile section.",
                 taskDate: "2026-06-07",
-                category: "Frontend"
+                category: "Frontend",
+                   Isaccepted: false
             },
             {
                 active: false,
@@ -174,7 +183,8 @@ const Employee = [
                 taskTitle: "Setup Git Repository",
                 taskDescription: "Initialize and configure GitHub repository.",
                 taskDate: "2026-05-26",
-                category: "Version Control"
+                category: "Version Control",
+                   Isaccepted: false
             }
         ]
     }

@@ -7,7 +7,9 @@ const EmpDashboard = ({ isOpen, loggedInUser, setUser }) => {
   const { name, role } = loggedInUser
   const taskCount = name.taskNumbers
   const tasks = name.tasks
- 
+  const loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+  console.log(loggedUser);
+  
   return (
     <div id="tasks" className='w-full h-[95%] p-2.5 pt-4 overflow-auto '>
       <div className='pb-5'>

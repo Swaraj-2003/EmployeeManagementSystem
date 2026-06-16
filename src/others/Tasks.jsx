@@ -15,7 +15,7 @@ const Tasks = ({ taskTitle,
         const updatedData = loggedInUser.name.tasks.filter((_, idx) => {
             return idx !== index
         })
-        // https:github.com/Swaraj-2003/EmployeeManagementSystem.git
+
         const updatedUser = {
             ...loggedInUser,
             name: {
@@ -24,7 +24,8 @@ const Tasks = ({ taskTitle,
                 taskNumbers: {
                     ...loggedInUser.name.taskNumbers,
                     completed: loggedInUser.name.taskNumbers.completed + 1,
-                    active: loggedInUser.name.taskNumbers.active - 1
+                    active: loggedInUser.name.taskNumbers.active - 1,
+                    newTask: loggedInUser.name.taskNumbers.newTask - 1
                 }
             }
         }
@@ -46,7 +47,8 @@ const Tasks = ({ taskTitle,
                     taskNumbers: {
                         ...emp.taskNumbers,
                         completed: emp.taskNumbers.completed + 1,
-                        active: emp.taskNumbers.active - 1
+                        active: emp.taskNumbers.active - 1,
+                        newTask: emp.taskNumbers.newTask - 1
                     }
                 }
             }
@@ -59,6 +61,7 @@ const Tasks = ({ taskTitle,
             JSON.stringify(updatedEmployees)
         )
     }
+
     return (
         <motion.div initial={{ scale: 1.05, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -79,9 +82,8 @@ const Tasks = ({ taskTitle,
                 }} className='px-2 py-1 bg-green-500 rounded text-white font-semibold font-sans cursor-pointer'>
                     Completed
                 </button>
-                <button onClick={() => {
-                    setIsaccepted(!Isaccepted)
-                }} className={`${Isaccepted ? 'px-2 py-1 bg-red-500 rounded text-white font-semibold font-sans cursor-pointer' : 'px-2 py-1 bg-green-500 rounded text-white font-semibold font-sans cursor-pointer'}`}>
+                <button disabled={Isaccepted} onClick={() => {
+                }} className={`${Isaccepted ? 'px-2 py-1 bg-red-500 disabled:cursor-not-allowed rounded text-white font-semibold font-sans cursor-pointer' : 'px-2 py-1 bg-green-500 rounded text-white font-semibold font-sans cursor-pointer'}`}>
                     {
                         Isaccepted ? "Accepted" : "Accept"
                     }

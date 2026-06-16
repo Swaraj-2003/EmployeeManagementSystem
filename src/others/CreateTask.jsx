@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import { RiAddBoxLine } from '@remixicon/react'
 
-const CreateTask = ({ Empdata, setEmpdata }) => {
+const CreateTask = ({ Empdata, setEmpdata, setUser, loggedInUser }) => {
+
+    const employee = JSON.parse(localStorage.getItem("employee"))
+    const loggedUser = JSON.parse(
+        localStorage.getItem("loggedUser")
+    )
+
     const [taskData, settaskData] = useState({
         taskTitle: "",
         taskDescription: "",
@@ -17,16 +23,66 @@ const CreateTask = ({ Empdata, setEmpdata }) => {
             newTask: true,
             completed: false,
             failed: false,
+            Isaccepted: false
         }))
     }
 
+
     const updateData = () => {
-        Empdata.forEach((user) => {
+
+        const updateEmployee = employee.map((user) => {
+
             if (user.username === taskData.assignTo) {
-                user.tasks.push(taskData)    
+
+                return {
+                    ...user,
+
+                    tasks: [...user.tasks, taskData],
+
+                    taskNumbers: {
+                        ...user.taskNumbers,
+                        newTask: user.taskNumbers.newTask + 1,
+                        active: user.taskNumbers.active + 1,
+                    }
+                }
             }
-        });
+
+            return user
+        })
+        
+        setEmpdata(updateEmployee)
+        localStorage.setItem(
+            "employee",
+            JSON.stringify(updateEmployee)
+        )
+
+        if (loggedUser?.name?.username === taskData.assignTo) {
+
+            const updatedLoggedUser = {
+                ...loggedUser,
+
+                name: {
+                    ...loggedUser.name,
+
+                    taskNumbers: {
+                        ...loggedUser.name.taskNumbers,
+                        newTask: loggedUser.name.taskNumbers.newTask + 1,
+                        active: loggedUser.name.taskNumbers.active + 1,
+                    }
+                }
+            }
+
+            localStorage.setItem(
+                "loggedUser",
+                JSON.stringify(updatedLoggedUser)
+            )
+
+            setUser(updatedLoggedUser)
+        }
+
+        alert("Task Created Successfully!")
     }
+
 
     return (
         <div className='px-5 bg-gray-900 rounded text-white py-2.5 border w-100 '>
@@ -37,6 +93,7 @@ const CreateTask = ({ Empdata, setEmpdata }) => {
             <form onSubmit={(e) => {
                 e.preventDefault()
                 console.log(taskData);
+                updateData()
                 settaskData({
                     taskTitle: "",
                     taskDescription: "",
@@ -44,10 +101,6 @@ const CreateTask = ({ Empdata, setEmpdata }) => {
                     assignTo: "",
                     category: ""
                 })
-                updateData()
-                console.log(Empdata);
-                alert("Task Created Successfully!")
-
 
             }} className='py-4 px-1.5'>
 
@@ -81,13 +134,11 @@ const CreateTask = ({ Empdata, setEmpdata }) => {
                         setData(e)
                     }} className='border-0 outline-0 px-1.5 py-1.5 bg-gray-700 rounded placeholder:text-white' name='category' value={taskData.category} type="text" placeholder='design , development etc.' />
                 </div>
-
                 <div className='py-4 flex flex-col gap-1.5'>
                     <button className='bg-green-500 px-2.5 py-2 rounded text-lg font-semibold hover:bg-green-400 cursor-pointer'>Create Task</button>
                 </div>
             </form>
         </div >
-
     )
 }
 

@@ -7,6 +7,8 @@ import Projects from './others/Projects';
 import Attendance from './others/Attendance'
 import Admin from './Components/pages/Admin'
 import { LoggedInuser, UserLogin } from './Context/Authcontext';
+import { setLocalstorage } from './others/Localstorage';
+
 
 const App = () => {
   const navigate = useNavigate()
@@ -93,11 +95,11 @@ const App = () => {
       {<Routes>
         <Route path='/' element={<Login handleLogin={handleLogin} />} />
         <Route path='/employee' element={<Employee isOpen={isOpen} setisOpen={setisOpen} loggedInUser={User} setUser={setUser} />}>
-          <Route index element={<EmpDashboard isOpen={isOpen} loggedInUser={User} setUser={setUser}  />} />
+          <Route index element={<EmpDashboard isOpen={isOpen} loggedInUser={User} setUser={setUser} />} />
           <Route path='projects' element={<Projects />} />
           <Route path='attendance' element={<Attendance />} />
         </Route>
-        <Route path='/admin' element={<Admin />} />
+        <Route path='/admin' element={<Admin setUser={setUser} loggedInUser={User} />} />
       </Routes>}
     </div >
   )
