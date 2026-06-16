@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+.inp {
+    background-color: rgba(193, 189, 189, 0.6);
+}
+
+.back {
+    background-color: rgb(218, 208, 186);
+
+}
+
+.icon:hover {
+    color: gray;
+}
+
+.image {
+    background-image: url('src/images/bg2.jpg');
+}
+
+.box:hover {
+    scale: 1.02;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#tasks::-webkit-scrollbar {
+    display: none;
+}
