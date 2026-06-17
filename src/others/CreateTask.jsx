@@ -42,7 +42,6 @@ const CreateTask = ({ Empdata, setEmpdata, setUser, loggedInUser }) => {
                     taskNumbers: {
                         ...user.taskNumbers,
                         newTask: user.taskNumbers.newTask + 1,
-                        active: user.taskNumbers.active + 1,
                     }
                 }
             }
@@ -67,7 +66,6 @@ const CreateTask = ({ Empdata, setEmpdata, setUser, loggedInUser }) => {
                     taskNumbers: {
                         ...loggedUser.name.taskNumbers,
                         newTask: loggedUser.name.taskNumbers.newTask + 1,
-                        active: loggedUser.name.taskNumbers.active + 1,
                     }
                 }
             }

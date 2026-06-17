@@ -7,7 +7,6 @@ export const LoggedInuser = createContext()
 
 const Authcontext = ({ children }) => {
   const [Empdata, setEmpdata] = useState(getLocalstorageEmp())
-  console.log(Empdata);
   
   const [Admdata, setAdmdata] = useState(getLocalstorageAdm())
   const [User, setUser] = useState(() => {

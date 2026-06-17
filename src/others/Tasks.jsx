@@ -5,10 +5,9 @@ import { UserLogin } from '../Context/Authcontext'
 const Tasks = ({ taskTitle,
     category,
     taskDescription,
-    taskDate, loggedInUser, index, setUser }) => {
-    const [Isaccepted, setIsaccepted] = useState(false)
-
+    taskDate, loggedInUser, index, setUser, Isaccepted }) => {
     const employee = JSON.parse(localStorage.getItem("employee"))
+
 
     const UpdateData = (index) => {
 
@@ -62,6 +61,65 @@ const Tasks = ({ taskTitle,
         )
     }
 
+    const updateTasks = (index) => {
+
+
+        const updatedData = loggedInUser.name.tasks.map((task, idx) => {
+            if (idx === index) {
+
+                return {
+                    ...task,
+                    Isaccepted: true
+                }
+
+            }
+            return task
+        })
+
+
+
+
+        const updateEmployee = employee.map((user) => {
+            if (user.id === loggedInUser.name.id) {
+                return {
+                    ...user,
+                    tasks: updatedData,
+                    taskNumbers: {
+                        ...user.taskNumbers,
+                        active: user.taskNumbers.active + 1
+                    }
+                }
+            }
+            return user
+        })
+
+        localStorage.setItem(
+            "employee",
+            JSON.stringify(updateEmployee)
+        )
+
+        const updatedUser = {
+            ...loggedInUser,
+            name: {
+                ...loggedInUser.name,
+                tasks: updatedData,
+                taskNumbers: {
+                    ...loggedInUser.name.taskNumbers,
+                    active: loggedInUser.name.taskNumbers.active + 1
+                }
+            }
+        }
+
+        setUser(updatedUser)
+
+        localStorage.setItem(
+            "loggedUser",
+            JSON.stringify(updatedUser)
+        )
+
+
+    }
+
     return (
         <motion.div initial={{ scale: 1.05, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -83,6 +141,7 @@ const Tasks = ({ taskTitle,
                     Completed
                 </button>
                 <button disabled={Isaccepted} onClick={() => {
+                    updateTasks(index)
                 }} className={`${Isaccepted ? 'px-2 py-1 bg-red-500 disabled:cursor-not-allowed rounded text-white font-semibold font-sans cursor-pointer' : 'px-2 py-1 bg-green-500 rounded text-white font-semibold font-sans cursor-pointer'}`}>
                     {
                         Isaccepted ? "Accepted" : "Accept"

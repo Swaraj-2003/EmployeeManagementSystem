@@ -8,7 +8,6 @@ const EmpDashboard = ({ isOpen, loggedInUser, setUser }) => {
   const taskCount = name.taskNumbers
   const tasks = name.tasks
   const loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-  console.log(loggedUser);
   
   return (
     <div id="tasks" className='w-full h-[95%] p-2.5 pt-4 overflow-auto '>
@@ -36,7 +35,7 @@ const EmpDashboard = ({ isOpen, loggedInUser, setUser }) => {
           <div className="box shadow-xs shadow-black h-40 w-75 bg-[#efefef] rounded-xl flex flex-col gap-2.5  px-2.5 py-2.5 ">
             <div className='flex gap-2 items-center'>
               <RiTaskLine size={"30px"} />
-              <h2 className='text-center text-black font-semibold font-sans'>Accepted</h2>
+              <h2 className='text-center text-black font-semibold font-sans'>Active</h2>
             </div>
             <div className='border border-gray-300'></div>
             <h2 className=' text-4xl text-black font-semibold font-sans'>{taskCount.active}</h2>
@@ -72,6 +71,7 @@ const EmpDashboard = ({ isOpen, loggedInUser, setUser }) => {
             loggedInUser={loggedInUser}
             index={idx}
             setUser={setUser}
+            Isaccepted={ele.Isaccepted}
           />
         })}
       </div>
